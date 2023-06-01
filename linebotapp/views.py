@@ -29,10 +29,8 @@ def line_webhook(request):
 @handler.add(FollowEvent)
 def handle_follow(event):
     print(event)
-    print(event.source)
-    print(type(event.source))
-    print(event.source['userId'])
-    User.objects.create_user(username=event.source.userId, password=event.source.userId)
+    print(event.source.user_id)
+    User.objects.create_user(username=event.source.user_id, password=event.source.user_id)
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
