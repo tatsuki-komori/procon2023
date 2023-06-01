@@ -39,6 +39,9 @@ def handle_text_message(event):
         room = Room.objects.create(room_id=event.source.user_id)
     
     room.user.add(User.objects.get(username=event.source.user_id).id)
+
+    Message.objects.create(room=room.id, message_text=event.message.text)
+
     # message = event.message.text
     # メッセージの処理ロジックをここに追加
     # 例: 応答メッセージを送信
