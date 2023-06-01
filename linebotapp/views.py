@@ -8,6 +8,9 @@ from linebot.models import MessageEvent, TextMessage
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 
+def index(request):
+    return HttpResponse("hello, world!")
+
 @csrf_exempt
 def line_webhook(request):
     if request.method == 'POST':
