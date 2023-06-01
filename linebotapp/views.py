@@ -26,6 +26,8 @@ def line_webhook(request):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     print(event)
+    print('message' in event)
+    print('id' in event.message)
     # message = event.message.text
     # メッセージの処理ロジックをここに追加
     # 例: 応答メッセージを送信
