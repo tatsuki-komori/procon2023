@@ -28,18 +28,17 @@ def line_webhook(request):
 
 @handler.add(FollowEvent)
 def handle_follow(event):
-    print(event)
-    print(event.source.user_id)
-    User.objects.create_user(username=event.source.user_id, password=event.source.user_id)
+    if User.objects.get(username=event.source.user_id).exit() == False:
+        User.objects.create_user(username=event.source.user_id, password=event.source.user_id)
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     if event.source.type == "room":
-        room = Room.objects.create(room_id=event.source.roomId)
+        room = Room.objects.create(room_id=event.source.room_id)
     else:
-        room = Room.objects.create(room_id=event.source.userId)
+        room = Room.objects.create(room_id=event.source.user_id)
     
-    room.user.add(event.source)
+    room.user.add(event.source.user_id)
     # message = event.message.text
     # メッセージの処理ロジックをここに追加
     # 例: 応答メッセージを送信
