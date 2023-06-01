@@ -1,0 +1,14 @@
+{
+    "deliveryContext": {
+        "isRedelivery": false
+    },
+    "mode": "active",
+    "replyToken": "a580c93f88f4448c964a1f99c2f2b564",
+    "source": {
+        "type": "user",
+        "userId": "Ue4639d9f1cb95119d1807e6fedf5d2a1"
+    },
+    "timestamp": 1685642975480,
+    "type": "follow",
+    "webhookEventId": "01H1W2D6QGXD97APTD3ZYGJKX6"
+}

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Room(models.Model):
-    room_id = models.CharField(max_length=64)
+    room_id = models.CharField(max_length=64, unique=True)
     user = models.ManyToManyField(User, verbose_name="ユーザー")
 
 

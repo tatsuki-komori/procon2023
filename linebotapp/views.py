@@ -5,6 +5,9 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import FollowEvent, MessageEvent, TextMessage, TextSendMessage
 
+from django.contrib.auth.models import User
+from linebotapp.models import Room, Message
+
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 
@@ -25,14 +28,16 @@ def line_webhook(request):
 
 @handler.add(FollowEvent)
 def handle_follow(event):
-    print(event)
+    User.objects.create_user(username=event.source.userId, password=event.source.userId)
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-    print(type(event))
-    print(event)
-    print('message' in event)
-    print('id' in event.message)
+    if event.source.type == "room":
+        room = Room.objects.create(room_id=event.source.roomId)
+    else:
+        room = Room.objects.create(room_id=event.source.userId)
+    
+    room.user.add(event.source.userId)
     # message = event.message.text
     # メッセージの処理ロジックをここに追加
     # 例: 応答メッセージを送信
