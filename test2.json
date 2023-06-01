@@ -1,0 +1,19 @@
+{
+    "deliveryContext": {
+        "isRedelivery": false
+    },
+    "message": {
+        "id": "457698625851228305",
+        "text": "\u3048\u3044\u3048\u3044\u304a\u30fc",
+        "type": "text"
+    },
+    "mode": "active",
+    "replyToken": "a8811cfcaf3b403cb43139d180e1de2b",
+    "source": {
+        "type": "user",
+        "userId": "Ue4639d9f1cb95119d1807e6fedf5d2a1"
+    },
+    "timestamp": 1685640944094,
+    "type": "message",
+    "webhookEventId": "01H1W0F70EDTF2F6FXK6HGCH4V"
+}
